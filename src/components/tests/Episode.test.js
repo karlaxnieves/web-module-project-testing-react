@@ -17,11 +17,11 @@ const testEpisodeWithoutImage = {
 }
 
 test("renders without error", () => {
-
+render(<Episode episode={true}/>);
 });
 
-test("renders the summury test passed as prop", ()=>{
-    
+test("renders the summary test passed as prop", ()=>{
+    render(<Episode episodes={summary}/>);
 });
 
 test("renders default image when image is not defined", ()=>{

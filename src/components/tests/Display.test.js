@@ -1,6 +1,23 @@
+import React from 'react';
+import {render, screen} from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import Display from  '../Display';
 
+test ('Test that the Display component renders without any passed in props', () =>{
+render(<Display displayFun={false}/>);
+const button = screen.queryByRole('button');
+expect(button).toBeInTheDocument();
+})
 
+test ('Test that when the fetch button is pressed, the show component will display', ()=>{
+    const fakeFunc = jest.fn();
 
+    render(<Display getData={fakeFunc} isFetchingData={false}/> );
+    const button = screen.getByRole("button");
+    userEvent.click(button);
+    
+    expect(fakeFunc.mock.calls.length).toBe(0);
+})
 
 
 
